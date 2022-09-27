@@ -5,6 +5,7 @@ use App\Models\Post;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
@@ -47,7 +48,7 @@ class PostController extends Controller
             'title.required' => 'Il titolo è obbligatorio',
             'title.min' => 'Il titolo deve avere minimo :min caratteri',
             'title.max' => 'Il titolo deve avere massimo :max caratteri',
-            'title.unique' => "Il titolo $request->title esiste",
+            'title.unique' => "Il titolo $request->title esiste già",
             'content.required' => 'Il contenuto è obbligatorio',
             'image.required' => 'Il link dell\'immagine deve iniziare con http',
 
@@ -97,6 +98,21 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $request->validate([
+            'title' => ['required', 'string', 'min:5', 'max:50', Rule::unique('posts')->ignore($post->id )],
+            'content' => 'required|string',
+            'image' => 'nullable|url'
+        ],
+        [
+            'title.required' => 'Il titolo è obbligatorio',
+            'title.min' => 'Il titolo deve avere minimo :min caratteri',
+            'title.max' => 'Il titolo deve avere massimo :max caratteri',
+            'title.unique' => "Il titolo $request->title esiste già",
+            'content.required' => 'Il contenuto è obbligatorio',
+            'image.required' => 'Il link dell\'immagine deve iniziare con http',
+
+        ]);
+
         $data = $request->all();
 
         $data['slug'] = Str::slug($request->title, '-');
