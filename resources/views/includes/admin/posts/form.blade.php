@@ -35,11 +35,11 @@
         <div class="col-11">
             <div class="form-group">
                 <label for="image">Immagine</label>
-                <input type="url" class="form-control" id="image" name="image" value="{{old('image', $post->image)}}">
+                <input type="url" class="form-control" id="image-field" name="image" value="{{old('image', $post->image)}}">
             </div>
         </div>
         <div class="col-1">
-            <img class="img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png " alt="" id="preview">
+            <img class="img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png" alt="" id="preview">
         </div>
     </div>
 <hr>
