@@ -17,7 +17,10 @@
             </a>
         </div>
         <div class="d-flex align-items-center justify-content-end">
-            <form action="{{route('admin.posts.destroy', $post->id)}}" method="POST" class="delete-form">
+            <a class="btn btn-warning" href="{{route('admin.posts.edit', $post)}}">
+                <i class="fa-solid fa-pencil mr-2"></i>Modifica
+            </a>
+            <form class="ml-2" action="{{route('admin.posts.destroy', $post->id)}}" method="POST" class="delete-form">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-danger" type="submit"><i class="fa-solid fa-trash mr-2"></i>Elimina</button>
