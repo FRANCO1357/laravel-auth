@@ -1,3 +1,14 @@
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+        @endforeach
+        </ul>
+    </div>
+@endif
+
+
 @if ($post->exists )
 <form action="{{route('admin.posts.update', $post)}}" method="POST">
     @method('PUT')
@@ -17,7 +28,7 @@
         </div>
         <div class="col-12">
             <div class="form-group">
-                <label for="image">Immagine</label>
+                <label for="image">Contenuto</label>
                 <textarea class="form-control" id="content" name="content">{{old('content', $post->content)}}</textarea>
             </div>
         </div>
