@@ -23,7 +23,7 @@
             <tr>
                 <th scope="row">{{$category->id}}</th>
                 <td>{{$category->label}}</td>
-                <td>{{$category->slug}}</td>
+                <td><span class="badge badge-pill badge-{{$category->color}}">{{$category->color}}</span></td>
                 <td>{{$category->created_at}}</td>
                 <td>{{$category->updated_at}}</td>
                 <td class="d-flex justify-content-end">
