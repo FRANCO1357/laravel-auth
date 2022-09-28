@@ -11,4 +11,8 @@ class Post extends Model
         'image',
         'content',
     ];
+
+    public function Category(){
+        return $this->belogTo('App\Models\Category');
+    }
 }
