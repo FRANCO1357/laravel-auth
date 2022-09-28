@@ -89,7 +89,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post')); 
+        $categories = Category::all();
+        return view('admin.posts.edit', compact('post', 'categories')); 
     }
 
     /**
@@ -104,7 +105,8 @@ class PostController extends Controller
         $request->validate([
             'title' => ['required', 'string', 'min:5', 'max:50', Rule::unique('posts')->ignore($post->id )],
             'content' => 'required|string',
-            'image' => 'nullable|url'
+            'image' => 'nullable|url',
+            'category_id' => 'nullable|exists:categories,id',
         ],
         [
             'title.required' => 'Il titolo è obbligatorio',
@@ -113,7 +115,7 @@ class PostController extends Controller
             'title.unique' => "Il titolo $request->title esiste già",
             'content.required' => 'Il contenuto è obbligatorio',
             'image.required' => 'Il link dell\'immagine deve iniziare con http',
-
+            'category_id.exixts' => 'Categoria non esistente',
         ]);
 
         $data = $request->all();
