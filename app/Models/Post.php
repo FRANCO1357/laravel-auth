@@ -10,6 +10,8 @@ class Post extends Model
         'title',
         'image',
         'content',
+        'slug',
+        'category_id',
     ];
 
     public function Category(){

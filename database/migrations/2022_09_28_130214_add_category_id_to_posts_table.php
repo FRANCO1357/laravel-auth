@@ -18,6 +18,9 @@ class AddCategoryIdToPostsTable extends Migration
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
 
+            // oppure
+            // $table->foreignId('category_id')->after('id')->nullable()->onDelete('set null')->constrained();
+
         });
     }
 
