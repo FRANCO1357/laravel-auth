@@ -29,7 +29,7 @@
         <div class="col-4">
             <div class="form-group">
                 <label for="category_id">Categoria</label>
-                <select class="form-control" id="category_id" name="category_id">
+                <select class="form-control @error('categorry_id') is_invalid @enderror" id="category_id" name="category_id">
                   <option value="">Nessuna categoria</option>
                   @foreach ($categories as $category)
                         <option

@@ -15,6 +15,6 @@ class Post extends Model
     ];
 
     public function Category(){
-        return $this->belogTo('App\Models\Category');
+        return $this->belongsTo('App\Models\Category');
     }
 }
