@@ -53,4 +53,20 @@
             {{$posts->links()}}
         @endif
       </nav>
+
+      <section class="my-5" id="category-post">
+        <h2>Post by category</h2>
+        <div class="row">
+            @foreach ($categories as $category)
+                <div class="col-5">
+                    <h4>{{$category->label}} ({{count($category->posts)}})</h4>
+                    @forelse ($category->posts as $post)
+                        <p><a href="{{route('admin.posts.show', $post->id)}}">{{$post->title}}</a></p>
+                    @empty
+                        Nessun post
+                    @endforelse
+                </div>
+            @endforeach
+        </div>
+      </section>
  @endsection
