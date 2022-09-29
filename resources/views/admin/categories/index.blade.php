@@ -15,6 +15,7 @@
             <th scope="col">Color</th>
             <th scope="col">Creato il</th>
             <th scope="col">Modificato il</th>
+            <th scope="col">N° di post</th>
             <th>Azioni</th>
           </tr>
         </thead>
@@ -26,6 +27,7 @@
                 <td><span class="badge badge-pill badge-{{$category->color}}">{{$category->color}}</span></td>
                 <td>{{$category->created_at}}</td>
                 <td>{{$category->updated_at}}</td>
+                <td>{{count($category->posts)}}</td>
                 <td class="d-flex justify-content-end">
                     <a class="btn btn-sm btn-primary ml-2" href="{{route('admin.categories.show', $category)}}"><i class="fa-solid fa-eye mr-2"></i>Vedi</a>
                     <a class="btn btn-sm btn-warning ml-2" href="{{route('admin.categories.edit', $category)}}"><i class="fa-solid fa-pencil mr-2"></i>Modifica</a>
