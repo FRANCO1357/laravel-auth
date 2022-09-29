@@ -16,13 +16,17 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $category_id = $request->query('category_id');
 
-        $posts = Post::orderBy('updated_at', 'DESC')->orderBy('created_at', 'DESC')->simplePaginate(10);
+        $query = Post::orderBy('updated_at', 'DESC')->orderBy('created_at', 'DESC');
+
+        $posts = $category_id ? $query->where('category_id', $category_id)->paginate(10) : $query->simplePaginate(10); 
 
         $categories = Category::all();
-        return view('admin.posts.index', compact('posts', 'categories')); 
+        $selected_category = $category_id;
+        return view('admin.posts.index', compact('posts', 'categories', 'selected_category')); 
     }
 
     /**

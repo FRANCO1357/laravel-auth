@@ -3,9 +3,26 @@
  @section('content')
      <header class="d-flex justify-content-between align-items-center">
         <h1>Lista posts</h1>
-        <a class="btn btn-success" href="{{route('admin.posts.create')}}">
-            <i class="fa-solid fa-square-plus mr-2"></i>Crea nuovo post
+        <div class="d-flex align-items-center">
+            <form action="" method="">
+                @csrf
+                <div class="input-group">
+                    <select class="custom-select" name="category_id">
+                    <option value="">Tutte le categorie</option>
+                    @foreach ($categories as $category)
+                        <option @if ($category->id == $selected_category) selected @endif value="{{$category->id}}">{{$category->label}}</option>
+                    @endforeach
+                    </select>
+                    <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Filtra</button>
+                    </div>
+                </div>
+            </form>
+
+        <a class="btn btn-success ml-2" href="{{route('admin.posts.create')}}">
+            <i class="fa-solid fa-square-plus"></i>
         </a>
+        </div>
     </header>
      <table class="table table-striped table-dark">
         <thead>
