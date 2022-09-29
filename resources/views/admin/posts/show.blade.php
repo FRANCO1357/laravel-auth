@@ -7,13 +7,14 @@
         <img class="float-left mr-2" src="{{$post->image}}" alt="{{$post->slug}}">
         @endif
         <p><strong>Categoria: </strong>@if($post->category) {{$post->category->label}} @else Nessuna @endif</p>
+        <p><strong>Autore: </strong>@if($post->user) {{$post->user->name}} @else Nessun autore @endif</p>
         <p>{{$post->content}}</p>
         <p>Creato il: {{$post->created_at}}</p>
         <p>Modificato il: {{$post->updated_at}}</p>
     </div>
     <footer class="d-flex align-items-center justify-content-between mt-2">
         <div>
-            <a class="btn btn-secondary" href="{{route('admin.posts.index')}}">
+            <a class="btn btn-secondary" href="{{route('admin.posts.index')}}"> 
                 <i class="fa-solid fa-rotate-left mr-2"></i>Indietro
             </a>
         </div>
