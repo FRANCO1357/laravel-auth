@@ -95,6 +95,11 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        //Controllo che possa modificare il post
+        if($post->user_id !== Auth::id()){
+            return redirect()->route('admin.posts.index')->with('message', 'Non sei autorizzato alla modifica')->with('type', 'warning');
+        }
+
         $categories = Category::all();
         return view('admin.posts.edit', compact('post', 'categories')); 
     }

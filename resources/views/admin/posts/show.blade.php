@@ -19,6 +19,7 @@
             </a>
         </div>
         <div class="d-flex align-items-center justify-content-end">
+            @if($post->user_id === Auth::id())
             <a class="btn btn-warning" href="{{route('admin.posts.edit', $post)}}">
                 <i class="fa-solid fa-pencil mr-2"></i>Modifica
             </a>
@@ -27,6 +28,7 @@
                 @method('DELETE')
                 <button class="btn btn-danger" type="submit"><i class="fa-solid fa-trash mr-2"></i>Elimina</button>
             </form>
+            @endif
         </div>
     </footer>
 @endsection
