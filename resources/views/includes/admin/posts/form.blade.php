@@ -42,6 +42,19 @@
                 </select>
               </div>
         </div>
+
+        @if (count($tags))
+        <div class="col-12 d-flex mt-3">
+            <h4 class="mr-4">Tags</h4>
+            @foreach ($tags as $tag)
+                <div class="form-group form-check mr-4">
+                    <input type="checkbox" class="form-check-input" id="tag-{{$tag->label}}" name="tags[]" value="{{$tag->id}}" @if(in_Array($tag->id, old('tags', $db_tags ?? []))) checked @endif>
+                    <label class="form-check-label" for="tag-{{$tag->label}}">{{$tag->label}}</label>
+                </div> 
+            @endforeach
+        </div>
+        @endif
+
         <div class="col-12">
             <div class="form-group">
                 <label for="image">Contenuto</label>
