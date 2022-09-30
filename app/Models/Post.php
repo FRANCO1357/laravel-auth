@@ -14,11 +14,15 @@ class Post extends Model
         'category_id',
     ];
 
-    public function Category(){
+    public function category(){
         return $this->belongsTo('App\Models\Category');
     }
 
-    public function User(){
+    public function user(){
         return $this->belongsTo('App\User');
+    }
+
+    public function tags(){
+        return $this->belongsToMany('App\Models\Tag');
     }
 }
