@@ -7,6 +7,12 @@
         <img class="float-left mr-2" src="{{$post->image}}" alt="{{$post->slug}}">
         @endif
         <p><strong>Categoria: </strong>@if($post->category) {{$post->category->label}} @else Nessuna @endif</p>
+        <p><strong>Tags: </strong> 
+        @forelse ($post->tags as $tag)
+            <span class="badge badge-pill text-white" style="background-color: {{$tag->color}}">{{$tag->label}}</span>
+        @empty
+            -
+        @endforelse</p>
         <p><strong>Autore: </strong>@if($post->user) {{$post->user->name}} @else Nessun autore @endif</p>
         <p>{{$post->content}}</p>
         <p>Creato il: {{$post->created_at}}</p>
